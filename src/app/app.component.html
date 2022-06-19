@@ -1,0 +1,96 @@
+<p>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>MTI 2022</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" 
+        [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span class="caption small" style="font-size: 13px; opacity: .5">Lista de Usuarios</span>
+      <span class="example-spacer"></span>
+
+      <div class="btn-group text-light" role="group" aria-label="Auth buttons" *ngIf="!isLoggedIn">
+        <button mat-button routerLink="login">
+            <mat-icon>lock</mat-icon>
+            <span> {{ username }}</span>
+        </button>
+      </div>
+      
+      <div class="btn-group text-white" role="group" aria-label="Auth buttons" *ngIf="isLoggedIn">
+          <button mat-button routerLink="profile">
+              <mat-icon >account_circle</mat-icon>
+              <span style="padding-left: 5px;">{{ username }}</span>
+          </button>
+          <button mat-button (click)="logout()">
+              <mat-icon>lock_open</mat-icon>
+          </button>
+      </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="home">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item routerLink="home">
+      <mat-icon>list</mat-icon>
+      <span>Mis Items</span>
+    </button>
+    <button mat-menu-item routerLink="profile">
+      <mat-icon>account_circle</mat-icon>
+      <span>Cuenta</span>
+    </button>
+  </mat-menu>
+</p>
+
+<main id="app" class="app_main">
+  <router-outlet></router-outlet>
+</main>
+
+<div class="offcanvas offcanvas-start offcanvasMenu" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group action-list-group navItemsMenu">
+      <a class="list-group-item d-flex justify-content-between align-items-center" href="/home">
+       <div><i class="me-2 bi bi-house-door"></i>Home</div>
+        <span class="badge bg-transparent rounded-pill"><i class="bi bi-chevron-right"></i></span>
+      </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" href="/terms">
+       <div><i class="me-2 bi bi-info-circle"></i>Terms &amp; Conditions</div>  
+        <span class="badge bg-transparent rounded-pill"><i class="bi bi-chevron-right"></i></span>
+      </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" href="/about-us">
+        <div><i class="me-2 bi bi-info-circle"></i>About Us</div>  
+        <span class="badge bg-transparent rounded-pill"><i class="bi bi-chevron-right"></i></span>
+      </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" href="/contact-us">
+        <div><i class="me-2 bi bi-info-circle"></i>Contact Us</div>  
+        <span class="badge bg-transparent rounded-pill"><i class="bi bi-chevron-right"></i></span>
+      </a>
+      <a *ngIf="!username" class="list-group-item d-flex justify-content-between align-items-center" href="/login">
+        <div><i class="me-2 bi bi-lock"></i>Login</div>  
+        <span class="badge bg-transparent rounded-pill"><i class="bi bi-chevron-right"></i></span>
+      </a>
+      <li *ngIf="username" class="list-group-item d-flex justify-content-between align-items-center" (click)="logout()">
+        <div><i class="me-2 bi bi-arrow-right"></i>Logout</div>  
+        <span class="badge bg-transparent rounded-pill"><i class="bi bi-chevron-right"></i></span>
+      </li>
+    </ul>   
+  </div>
+</div>
+
+<footer id="app_footer">
+  <div class="container-fluid p-0">
+    <div class="col-12 py-3 text-center bg-dark">
+      <small class="text-muted">Angular Material UI©2022 powered by <a class="text-muted" href="https://github.com/alejandri" target="_blank">Alejandro Beltran</a>  </small>
+  </div>
+  </div>
+</footer>

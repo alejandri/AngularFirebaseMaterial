@@ -1,0 +1,53 @@
+.example-container {
+    height: 100%;
+    margin: 10px;
+  }
+
+.mat-drawer-container {
+    display: contents;
+    overflow: hidden;
+}
+
+.add-container {
+    width: 350px;
+    height: 500px;
+    background-color: aquamarine;
+    position: fixed;
+    right: 0;
+  }
+  .btnAdd{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1;
+  }
+
+  .listItems{
+    min-width: 450px;
+    background: #f3f3f3;
+    min-height: 600px;
+  }
+  .listItems .mat-list-item{
+    border-bottom: 1px solid rgb(192, 192, 192)
+  }
+
+
+  .mat-list-base .mat-list-option .mat-line.caption{
+    color: grey;
+    font-size: x-small !important ;
+  }
+
+  .sideForm{
+    min-width: 320px;
+    position: fixed;
+    z-index: 111111;
+  }
+
+  .mat-drawer-content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 600px;
+    overflow:hidden 
+}
+

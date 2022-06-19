@@ -1,0 +1,15 @@
+.app_main{
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+#app_footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    font-size: x-small;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }

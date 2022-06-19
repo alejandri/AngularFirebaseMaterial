@@ -1,0 +1,43 @@
+<section class="example-section">
+  
+<mat-drawer-container [hasBackdrop]="true">
+  <mat-drawer-content>
+    <mat-drawer-container *ngIf="registros">
+     
+      <mat-drawer mode="side" opened class="listItems">
+        <mat-selection-list #items_l1 [multiple]="false">
+          <div mat-subheader>Colecciones / Documentos</div>
+          <mat-list-option *ngFor="let item of registros; let i = index"  [class.active]="i == currentIndex" (click)="setActiveTutorial(item, i)">  
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <div mat-line> {{ item.codigo }}</div>          
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-drawer>
+
+      <mat-drawer-content>
+        <mat-selection-list #items_l2 [multiple]="true">
+          <div mat-subheader>Documentos/detalles</div>
+          <mat-list-option *ngFor="let item of registros; let i = index">
+            <mat-icon mat-list-icon>list</mat-icon>
+            <div mat-line> {{ item.descripcion }}</div>
+            <div mat-line class="caption"> {{item.fecha | date}} - Codigo {{item.codigo}} - Id {{item.id}} </div> 
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-drawer-content>
+
+    </mat-drawer-container>
+
+    <button class="md-fab md-fab-bottom-right btnAdd" (click)="drawer.toggle()" mat-fab color="primary" id="add-button" matTooltip="Add customer">
+      <i class="material-icons" >add</i>
+    </button>
+  </mat-drawer-content>
+    
+  <mat-drawer class="sideForm" #drawer mode="over" position="end" (openedChange)="onOpenedChange($event)">
+    <app-post-create (onChange)="closePanel($event)"></app-post-create>
+  </mat-drawer>
+
+</mat-drawer-container>
+
+</section>
+
+
