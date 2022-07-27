@@ -11,6 +11,10 @@ Este proyecto ha sido generado para generar y listar regsitros desde Firebase An
 5. Run `ng serve` for a dev server. 
 6. Abrir el navegador y navegar `http://localhost:4200/`
 
+![Screenshot_1](https://user-images.githubusercontent.com/3764626/174481572-93e0731c-55df-4424-b7c5-e05ddb49fc56.jpg)
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+![Screenshot_2](https://user-images.githubusercontent.com/3764626/174481580-4c37ea18-aafc-4300-a2d2-8970d5a8ec8d.jpg)
