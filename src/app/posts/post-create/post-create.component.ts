@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Post } from 'src/app/_interfaces/post';
@@ -10,6 +10,7 @@ import { FirebaseService } from 'src/app/_services/firebase.service';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
+  @Input() idincub:any;
   @Output() onChange = new EventEmitter<any>();
 
   registro: Post = new Post;
@@ -24,31 +25,29 @@ export class PostCreateComponent implements OnInit {
   };
   errorMessage = '';
 
-  collection_name:string = 'registros';
   itemCreated:boolean = false;
 
   constructor(private firebaseService: FirebaseService) { 
     this.createForm = new FormGroup({
       
-      id: new FormControl('', [Validators.required]),
+      id: new FormControl(this.idincub ? this.idincub : 1, [Validators.required]),
       codigo: new FormControl('', [Validators.required]),
       descripcion: new FormControl('', [Validators.required]),
       fecha: new FormControl('', [Validators.required]),
-      collection_name: new FormControl('registros', [Validators.required]),
     });
 
   }
 
   ngOnInit(): void {
+    
   }
 
 
   onSubmit(): void {
     const { codigo, descripcion } = this.createForm.value;
-    console.log("Item created!", this.createForm.value);
-    console.log("this.createForm.value.collection_name", this.createForm.value.collection_name);
+   
     this.itemCreated = true;
-      this.firebaseService.create(this.createForm.value.collection_name, this.createForm.value).then(() => {
+      this.firebaseService.create(this.idincub, this.createForm.value).then(() => {
         this.submitted = true;
         if(this.submitted = true){
           console.log('Created new item successfully!');

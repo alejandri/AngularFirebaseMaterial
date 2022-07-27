@@ -6,7 +6,7 @@ import { Post } from '../_interfaces/post';
   providedIn: 'root'
 })
 export class FirebaseService {
-  private dbPath = '/registros';
+  private dbPath = '/registros1';
   registrosRef: AngularFirestoreCollection<Post>;
 
   constructor(private db: AngularFirestore) {
@@ -16,10 +16,17 @@ export class FirebaseService {
   getAll(): AngularFirestoreCollection<Post> {
     return this.registrosRef;
   }
-  create(collection:string, registro: Post): any {
+  getIncubadora(idIncub:number): AngularFirestoreCollection<Post> {
+    this.registrosRef = this.db.collection('/registros'+idIncub);
+    return this.registrosRef;
+  }
+
+  create(incub:number, registro: Post): any {
+    let collection = 'registros'+incub;
     this.registrosRef = this.db.collection(collection);
     return this.registrosRef.add({ ...registro });
   }
+
   update(id: string, data: any): Promise<void> {
     return this.registrosRef.doc(id).update(data);
   }

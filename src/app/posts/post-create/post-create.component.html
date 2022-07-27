@@ -5,21 +5,21 @@
 
   <form [formGroup]="createForm" (ngSubmit)="onSubmit()" novalidate class="d-flex-center" #f="ngForm">
   <div class="form-create">
-    
+
     <div>
       <mat-form-field>
-          <input matInput placeholder="id" formControlName="id">
+          <input matInput placeholder="Incubadora" formControlName="id" [value]="idincub" readonly>
       </mat-form-field>
     </div>
 
       <div class="mt-top-2">
         <mat-form-field>
-          <input matInput placeholder="Cod" formControlName="codigo">
+          <input matInput placeholder="Temperatura" formControlName="codigo">
           <mat-error *ngIf="!createForm.get('codigo')?.errors?.required && (createForm.get('codigo')?.errors?.pattern)">
-            Ingrese codigo
+            Ingrese Temperatura
           </mat-error>
           <mat-error *ngIf="createForm.get('codigo')?.invalid && (createForm.get('codigo')?.dirty || createForm.get('codigo')?.touched) && createForm.get('codigo')?.errors?.required">
-            Codigo es requerido
+            Temperatura es requerida
           </mat-error>
         </mat-form-field>
       </div>
@@ -36,15 +36,11 @@
       </div>
       <div class="mt-top-2">
         <mat-form-field>
-            <input matInput placeholder="fecha" formControlName="fecha" type="date">
+            <input matInput placeholder="fecha" formControlName="fecha" type="datetime-local">
         </mat-form-field>
       </div>
 
-      <div class="my-10">
-        <mat-form-field>
-          <input matInput readonly placeholder="Coleccion" formControlName="collection_name" [value]="'registros'">
-        </mat-form-field>
-      </div>  
+
          
       <!-- show errors messages -->  
       <div class="alert alert-danger small p-2 mt-2" role="alert" *ngIf="errorMessage">

@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
     this.tokenStorageService.signOut();
     this.router.navigate(['/login']).then( (e) => {
       if (e) {
+        
         window.location.reload();
       } 
     }); 

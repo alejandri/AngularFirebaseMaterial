@@ -1,7 +1,7 @@
 <p>
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>MTI 2022</span>
+      <span>MIT 2022</span>
       <span class="example-spacer"></span>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" 
         [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()">
@@ -9,11 +9,11 @@
       </button>
     </mat-toolbar-row>
     <mat-toolbar-row>
-      <span class="caption small" style="font-size: 13px; opacity: .5">Lista de Usuarios</span>
+      <span class="caption small" style="font-size: 13px; opacity: .5">Monitor de Temperatura de Incubadoras Neonatales</span>
       <span class="example-spacer"></span>
 
       <div class="btn-group text-light" role="group" aria-label="Auth buttons" *ngIf="!isLoggedIn">
-        <button mat-button routerLink="login">
+        <button mat-button (click)="logout()">
             <mat-icon>lock</mat-icon>
             <span> {{ username }}</span>
         </button>

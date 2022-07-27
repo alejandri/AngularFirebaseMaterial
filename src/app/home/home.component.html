@@ -6,21 +6,21 @@
      
       <mat-drawer mode="side" opened class="listItems">
         <mat-selection-list #items_l1 [multiple]="false">
-          <div mat-subheader>Colecciones / Documentos</div>
-          <mat-list-option *ngFor="let item of registros; let i = index"  [class.active]="i == currentIndex" (click)="setActiveTutorial(item, i)">  
+          <div mat-subheader>Incubadoras Ocupadas</div>
+          <mat-list-option *ngFor="let item of incubadoras; let i = index"  [class.active]="i == currentIndex" (click)="setActiveTutorial(item, i)">  
             <mat-icon mat-list-icon>folder</mat-icon>
-            <div mat-line> {{ item.codigo }}</div>          
-          </mat-list-option>
+            <div mat-line> {{ item.descripcion }}</div>          
+          </mat-list-option> 
         </mat-selection-list>
       </mat-drawer>
 
       <mat-drawer-content>
         <mat-selection-list #items_l2 [multiple]="true">
-          <div mat-subheader>Documentos/detalles</div>
+          <div mat-subheader>Registros en tiempo real ( Incubadora {{currentIndex}})</div>
           <mat-list-option *ngFor="let item of registros; let i = index">
             <mat-icon mat-list-icon>list</mat-icon>
-            <div mat-line> {{ item.descripcion }}</div>
-            <div mat-line class="caption"> {{item.fecha | date}} - Codigo {{item.codigo}} - Id {{item.id}} </div> 
+            <div mat-line> <b>{{item.codigo}}º</b> {{ item.descripcion }}</div>
+            <div mat-line class="caption"> {{ item.fecha | date:'yyyy/MM/dd h:mm:ss a' }}  </div> 
           </mat-list-option>
         </mat-selection-list>
       </mat-drawer-content>
@@ -33,7 +33,7 @@
   </mat-drawer-content>
     
   <mat-drawer class="sideForm" #drawer mode="over" position="end" (openedChange)="onOpenedChange($event)">
-    <app-post-create (onChange)="closePanel($event)"></app-post-create>
+    <app-post-create (onChange)="closePanel($event)" [idincub]="currentIndex"></app-post-create>
   </mat-drawer>
 
 </mat-drawer-container>
